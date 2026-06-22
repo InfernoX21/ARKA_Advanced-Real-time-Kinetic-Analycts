@@ -55,7 +55,7 @@ export default function Sidebar({
     >
       {/* Platform Branding Header */}
       <div>
-        <div className="flex items-center justify-between p-4 border-b border-[#1F242E] h-16">
+        <div className={`flex items-center justify-between border-b border-[#1F242E] h-16 ${collapsed ? 'px-2' : 'p-4'}`}>
           {!collapsed && (
             <div className="flex items-center gap-2.5 overflow-hidden whitespace-nowrap">
               <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-[#D9EF92]/10 border border-[#D9EF92]/30">
@@ -78,7 +78,7 @@ export default function Sidebar({
         </div>
 
         {/* Navigation Items */}
-        <nav className="p-3 space-y-1.5 flex-1">
+        <nav className={`space-y-1.5 flex-1 ${collapsed ? 'p-2' : 'p-3'}`}>
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive = currentTab === item.id;
@@ -87,13 +87,15 @@ export default function Sidebar({
                 key={item.id}
                 id={`sidebar-item-${item.id}`}
                 onClick={() => setCurrentTab(item.id)}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-all duration-200 cursor-pointer relative group ${
+                className={`w-full flex items-center rounded-lg text-left transition-all duration-200 cursor-pointer relative group ${
+                  collapsed ? 'justify-center p-2.5' : 'gap-3 px-3 py-2.5'
+                } ${
                   isActive 
                     ? 'bg-[#D9EF92]/10 text-[#D9EF92] font-medium border border-[#D9EF92]/20' 
-                    : 'text-gray-400 hover:text-white hover:bg-white/[0.02]'
+                    : 'text-gray-400 hover:text-white hover:bg-white/[0.02] border border-transparent'
                 }`}
               >
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center flex-shrink-0">
                   <Icon className={`w-4 h-4 transition-colors ${isActive ? 'text-[#D9EF92]' : 'text-gray-400 group-hover:text-white'}`} />
                 </div>
                 
@@ -131,7 +133,7 @@ export default function Sidebar({
       </div>
 
       {/* Collapse Trigger Footer */}
-      <div className="p-3 border-t border-[#1F242E]">
+      <div className={`border-t border-[#1F242E] ${collapsed ? 'p-2' : 'p-3'}`}>
         <button
           onClick={() => setCollapsed(!collapsed)}
           className="w-full flex items-center justify-center gap-2 py-2 text-gray-500 hover:text-white hover:bg-white/[0.02] border border-dashed border-[#1F242E] rounded-lg transition-colors cursor-pointer"
