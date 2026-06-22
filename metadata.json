@@ -1,0 +1,6 @@
+{
+  "name": "Bhubaneswar Smart City Command Center",
+  "description": "City-scale live 5G digital twin and green corridor transit routing platform centered exclusively on the Bhubaneswar Municipal Corporation region.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
